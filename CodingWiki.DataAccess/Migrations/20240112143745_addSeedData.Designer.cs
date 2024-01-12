@@ -4,6 +4,7 @@ using CodingWiki.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodingWiki.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240112143745_addSeedData")]
+    partial class addSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,11 +54,11 @@ namespace CodingWiki.DataAccess.Migrations
 
             modelBuilder.Entity("CodingWiki.Models.Models.Book", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"));
 
                     b.Property<string>("ISBN")
                         .HasColumnType("nvarchar(max)");
@@ -70,7 +73,7 @@ namespace CodingWiki.DataAccess.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("BookId");
 
                     b.HasIndex("PublisherId");
 
@@ -79,7 +82,7 @@ namespace CodingWiki.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            BookId = 1,
                             ISBN = "123B12",
                             Price = 10.99m,
                             PublisherId = 1,
@@ -87,15 +90,15 @@ namespace CodingWiki.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            BookId = 2,
                             ISBN = "1212BC1212",
                             Price = 11.99m,
-                            PublisherId = 2,
+                            PublisherId = 1,
                             Title = "Fortune of time"
                         },
                         new
                         {
-                            Id = 3,
+                            BookId = 3,
                             ISBN = "77652",
                             Price = 20.99m,
                             PublisherId = 2,
@@ -103,15 +106,15 @@ namespace CodingWiki.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            BookId = 4,
                             ISBN = "CC12B12",
                             Price = 25.99m,
-                            PublisherId = 1,
+                            PublisherId = 3,
                             Title = "Cookie Jar"
                         },
                         new
                         {
-                            Id = 5,
+                            BookId = 5,
                             ISBN = "90392B33",
                             Price = 40.99m,
                             PublisherId = 1,

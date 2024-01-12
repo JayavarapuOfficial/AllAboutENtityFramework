@@ -4,6 +4,7 @@ using CodingWiki.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodingWiki.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240112145139_noSeed")]
+    partial class noSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,48 +78,6 @@ namespace CodingWiki.DataAccess.Migrations
                     b.HasIndex("PublisherId");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ISBN = "123B12",
-                            Price = 10.99m,
-                            PublisherId = 1,
-                            Title = "Spider Without Duty"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ISBN = "1212BC1212",
-                            Price = 11.99m,
-                            PublisherId = 2,
-                            Title = "Fortune of time"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ISBN = "77652",
-                            Price = 20.99m,
-                            PublisherId = 2,
-                            Title = "Fake Sunday"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ISBN = "CC12B12",
-                            Price = 25.99m,
-                            PublisherId = 1,
-                            Title = "Cookie Jar"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ISBN = "90392B33",
-                            Price = 40.99m,
-                            PublisherId = 1,
-                            Title = "Cloudy Forest"
-                        });
                 });
 
             modelBuilder.Entity("CodingWiki.Models.Models.BookDetail", b =>
@@ -184,26 +145,6 @@ namespace CodingWiki.DataAccess.Migrations
                     b.HasKey("PublisherId");
 
                     b.ToTable("Publishers");
-
-                    b.HasData(
-                        new
-                        {
-                            PublisherId = 1,
-                            Location = "Chicago",
-                            Name = "Pub 1 Jimmy"
-                        },
-                        new
-                        {
-                            PublisherId = 2,
-                            Location = "NewYork",
-                            Name = "Pub 2 John"
-                        },
-                        new
-                        {
-                            PublisherId = 3,
-                            Location = "Hawaii",
-                            Name = "Pub 3 Ben"
-                        });
                 });
 
             modelBuilder.Entity("CodingWiki.Models.Models.SubCategory", b =>
